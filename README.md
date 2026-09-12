@@ -1,5 +1,7 @@
 # Aditi Bhagat — Personal Website
 
+Live: https://aditibhagat.vercel.app
+
 A minimal retro portfolio with five focused views: introduction, experience, projects, open source, and about. Built with semantic HTML, responsive CSS, and vanilla JavaScript. No build step or application dependencies.
 
 ## Develop
@@ -14,7 +16,7 @@ Professional content comes from the supplied résumé. Public contribution links
 
 ## Deploy
 
-Import this repository into Vercel with the Other framework preset and no build command. Serve the repository root as static files.
+Hosted on the free Hobby plan in the `aditi-bhagat` Vercel workspace, project `aditi-portfolio`. Deploy with `npx vercel deploy --prod --scope aditi-bhagat --project aditi-portfolio`. The framework is Other, with no build step. GitHub holds the source; deployments currently use the CLI.
 
 ## Themes
 
