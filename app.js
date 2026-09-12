@@ -17,3 +17,25 @@ function contribution(name,lang,desc,prs){return `<article class="contribution c
 function render(){const key=location.hash.slice(1)||'home';const page=pages[key]?key:'home';const main=document.querySelector('main');main.innerHTML=pages[page]();main.classList.remove('view-enter');void main.offsetWidth;main.classList.add('view-enter');document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page===page)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});document.title=`${{home:'Aditi Bhagat — Software Engineer',work:'Experience — Aditi Bhagat',projects:'Projects — Aditi Bhagat',opensource:'Open Source — Aditi Bhagat',about:'About — Aditi Bhagat'}[page]}`;if(window.scrollY>100)window.scrollTo({top:0,behavior:'instant'});}
 document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();document.querySelector('main').focus()});
 window.addEventListener('hashchange',()=>{render();document.querySelector('main').focus({preventScroll:true})});render();
+
+const themeToggle = document.querySelector('#theme-toggle');
+function syncThemeToggle() {
+  const dark = document.documentElement.dataset.theme === 'dark';
+  themeToggle.setAttribute('aria-checked', String(dark));
+  themeToggle.querySelector('.theme-label').textContent = dark ? 'DARK' : 'LIGHT';
+  themeToggle.querySelector('.theme-icon').textContent = dark ? '☾' : '☀';
+  document.querySelector('meta[name="theme-color"]').content = dark ? '#263f35' : '#abd4b5';
+}
+themeToggle.addEventListener('click', () => {
+  const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = theme;
+  try { localStorage.setItem('aditi-theme', theme); } catch (_) { /* Keep in-memory selection. */ }
+  syncThemeToggle();
+});
+window.addEventListener('storage', event => {
+  if (event.key === 'aditi-theme') {
+    document.documentElement.dataset.theme = event.newValue === 'dark' ? 'dark' : 'light';
+    syncThemeToggle();
+  }
+});
+syncThemeToggle();

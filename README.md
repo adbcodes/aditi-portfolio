@@ -15,3 +15,7 @@ Professional content comes from the supplied résumé. Public contribution links
 ## Deploy
 
 Import this repository into Vercel with the Other framework preset and no build command. Serve the repository root as static files.
+
+## Themes
+
+The header switch changes between the original light palette and a custom dark retro palette. The choice persists in local storage, applies before rendering, and syncs across tabs. It remains usable when browser storage is unavailable. The control exposes its state to assistive technology and supports keyboard activation.
